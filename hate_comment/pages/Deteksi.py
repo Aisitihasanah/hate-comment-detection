@@ -2,13 +2,8 @@ import streamlit as st
 import joblib
 from pathlib import Path
 
-st.set_page_config(
-    page_title="Hate Comment Detection",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
+css_file = Path(__file__).parent.parent / "style.css"
 
-css_file = Path(__file__).parent / "style.css"
 if css_file.exists():
     st.markdown(
         f"<style>{css_file.read_text()}</style>",
@@ -16,6 +11,7 @@ if css_file.exists():
     )
 else:
     st.warning("style.css tidak ditemukan")
+
 
 @st.cache_resource
 def load_assets():
@@ -69,3 +65,4 @@ if st.button("🔍 Analysis Sekarang"):
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
