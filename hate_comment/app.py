@@ -54,7 +54,15 @@ with col1:
     )
 
 with col2:
-    st.image("assets/problem2.png", use_container_width=True)
+    import os
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    img_path = os.path.join(BASE_DIR, "assets", "problem2.png")
+
+    if os.path.exists(img_path):
+        st.image(img_path, use_container_width=True)
+    else:
+        st.warning("Gambar problem2.png tidak ditemukan")
 
 st.markdown("<h2 style='text-align: center; margin-bottom: 2rem;'>Our Solutions</h2>", unsafe_allow_html=True)
 
@@ -102,4 +110,5 @@ with c3:
                 <p>Antarmuka sederhana dan intuitif untuk melakukan analisis komentar dengan cepat dan mudah.</p>
             </div>
         </div>
+
     """, unsafe_allow_html=True)
