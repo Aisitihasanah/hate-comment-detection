@@ -18,10 +18,11 @@ def load_css():
 
 load_css()
 
-hero_image = Path("assets/hero.jpg")
+BASE_DIR = Path(__file__).resolve().parent
+hero_image_path = BASE_DIR / "assets" / "hero.jpg"
 
-if hero_image.exists():
-    encoded_image = base64.b64encode(hero_image.read_bytes()).decode()
+if hero_image_path.exists():
+    encoded_image = base64.b64encode(hero_image_path.read_bytes()).decode()
 
     st.markdown(
         f"""
@@ -31,7 +32,8 @@ if hero_image.exists():
             <div class="hero-text">
                 <h1>Hate Comment<br>Detection</h1>
                 <p>
-                    Sistem pendeteksi komentar berbasis Natural Language Processing untuk mengklasifikasikan komentar Netral dan Hate secara otomatis.
+                    Sistem pendeteksi komentar berbasis Natural Language Processing
+                    untuk mengklasifikasikan komentar Netral dan Hate secara otomatis.
                 </p>
                 <a href="Deteksi" class="hero-btn">Mulai Deteksi</a>
             </div>
@@ -39,6 +41,9 @@ if hero_image.exists():
         """,
         unsafe_allow_html=True
     )
+else:
+    st.error("File hero.jpg tidak ditemukan di folder assets/")
+
     
 
 st.markdown("## Rising Problem We Face")
@@ -114,4 +119,5 @@ with c3:
             </div>
         </div>
     """, unsafe_allow_html=True)
+
 
