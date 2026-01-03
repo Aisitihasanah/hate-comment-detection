@@ -3,20 +3,21 @@ from pathlib import Path
 import base64
 import os
 
-
 st.set_page_config(
     page_title="Hate Comment Detection",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-def load_css():
-    css_file = Path("style.css")
-    if css_file.exists():
-        with open(css_file) as f:
-            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+css_file = Path(__file__).parent / "style.css"
+if css_file.exists():
+    st.markdown(
+        f"<style>{css_file.read_text()}</style>",
+        unsafe_allow_html=True
+    )
+else:
+    st.warning("style.css tidak ditemukan")
 
-load_css()
 
 BASE_DIR = Path(__file__).resolve().parent
 hero_image_path = BASE_DIR / "assets" / "hero.jpg"
@@ -119,5 +120,6 @@ with c3:
             </div>
         </div>
     """, unsafe_allow_html=True)
+
 
 
