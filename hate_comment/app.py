@@ -1,6 +1,8 @@
 import streamlit as st
 from pathlib import Path
 import base64
+import os
+
 
 st.set_page_config(
     page_title="Hate Comment Detection",
@@ -67,18 +69,19 @@ with col2:
 st.markdown("<h2 style='text-align: center; margin-bottom: 2rem;'>Our Solutions</h2>", unsafe_allow_html=True)
 
 c1, c2, c3 = st.columns(3)
-# Fungsi untuk mengonversi gambar lokal ke base64
+
 def get_base64_img(path):
+    if not os.path.exists(path):
+        return ""
     with open(path, "rb") as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+        return base64.b64encode(f.read()).decode()
 
-# Load gambar dari folder assets
-img1 = f"data:image/png;base64,{get_base64_img('assets/solution_1.png')}"
-img2 = f"data:image/png;base64,{get_base64_img('assets/solution_2.png')}"
-img3 = f"data:image/png;base64,{get_base64_img('assets/solution_3.png')}"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Layouting dengan Kolom
+img1 = f"data:image/png;base64,{get_base64_img(os.path.join(BASE_DIR,'assets','solution_1.png'))}"
+img2 = f"data:image/png;base64,{get_base64_img(os.path.join(BASE_DIR,'assets','solution_2.png'))}"
+img3 = f"data:image/png;base64,{get_base64_img(os.path.join(BASE_DIR,'assets','solution_3.png'))}"
+
 with c1:
     st.markdown(f"""
         <div class="card-container">
@@ -96,7 +99,7 @@ with c2:
             <img src="{img2}" class="card-img"/>
             <div class="card-content">
                 <h3>Educate & Prevent</h3>
-                <p>Mendukung upaya pencegahan ujaran kebencian melalui pemanfaatan teknologi analisis teks.</p>
+                <p>Mendukung pencegahan ujaran kebencian melalui teknologi NLP.</p>
             </div>
         </div>
     """, unsafe_allow_html=True)
@@ -110,5 +113,5 @@ with c3:
                 <p>Antarmuka sederhana dan intuitif untuk melakukan analisis komentar dengan cepat dan mudah.</p>
             </div>
         </div>
-
     """, unsafe_allow_html=True)
+
