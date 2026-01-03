@@ -4,16 +4,18 @@ from pathlib import Path
 
 st.set_page_config(
     page_title="Hate Comment Detection",
-        initial_sidebar_state="collapsed",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+css_file = Path(__file__).parent / "style.css"
+if css_file.exists():
+    st.markdown(
+        f"<style>{css_file.read_text()}</style>",
+        unsafe_allow_html=True
     )
-
-def load_css():
-    if Path("style.css").exists():
-        with open("style.css") as f:
-            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-load_css()
+else:
+    st.warning("style.css tidak ditemukan")
 
 @st.cache_resource
 def load_assets():
@@ -64,5 +66,6 @@ if st.button("🔍 Analysis Sekarang"):
         """, unsafe_allow_html=True)
     else:
         st.warning("Silakan masukkan teks.")
+
 
 st.markdown('</div>', unsafe_allow_html=True)
