@@ -16,12 +16,15 @@ else:
 @st.cache_resource
 def load_assets():
     try:
-        tfidf = joblib.load("models/tfidf.pkl")
-        model = joblib.load("models/mlp_model.pkl")
-        le = joblib.load("models/label_encoder.pkl")
+        BASE_DIR = Path(__file__).parent.parent
+        tfidf = joblib.load(BASE_DIR / "models" / "tfidf.pkl")
+        model = joblib.load(BASE_DIR / "models" / "mlp_model.pkl")
+        le = joblib.load(BASE_DIR / "models" / "label_encoder.pkl")
         return tfidf, model, le
-    except:
+    except Exception as e:
+        st.error(f"Gagal load model: {e}")
         return None, None, None
+
 
 tfidf, model, le = load_assets()
 
@@ -65,4 +68,5 @@ if st.button("🔍 Analysis Sekarang"):
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
