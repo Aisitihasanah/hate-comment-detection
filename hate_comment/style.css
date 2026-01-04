@@ -126,8 +126,9 @@ h1, h2 {
 }
 
 .main .block-container {
-    max-width: 900px;
-    padding-top: 2rem;
+    max-width: 100% !important;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .stButton:first-of-type button {
@@ -218,32 +219,49 @@ h1, h2 {
 @media (max-width: 768px) {
 
     .hero-container {
-        height: auto;
-        border-radius: 16px;
-        margin-bottom: 3rem;
+        min-height: 420px;
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-img {
+        height: 100%;
+        object-fit: cover;
     }
 
     .hero-text {
-        left: 20px;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        max-width: 100%;
+        position: relative;
+        top: unset;
+        left: unset;
+        transform: none;
+
+        width: 100%;
+        z-index: 3;
+
+        text-align: left;
     }
 
     .hero-text h1 {
         font-size: 2rem;
         line-height: 1.2;
+        margin-bottom: 0.8rem;
     }
 
     .hero-text p {
         font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+        max-width: 90%;
     }
 
     .hero-btn {
-        padding: 0.7rem 1.8rem;
+        padding: 0.8rem 1.6rem;
         font-size: 0.95rem;
     }
+}
+
 
     div[data-testid="column"] {
         width: 100% !important;
@@ -266,6 +284,7 @@ h1, h2 {
         gap: 1rem;
     }
 }
+
 
 
 
