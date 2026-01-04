@@ -219,63 +219,35 @@ h1, h2 {
 @media (max-width: 768px) {
 
     .hero-container {
-        min-height: 420px;
+        height: auto;
         padding: 2rem 1.5rem;
-        border-radius: 20px;
-
-        display: flex;
-        align-items: center;
-    }
-
-    .hero-img {
-        height: 100%;
-        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 3rem;
     }
 
     .hero-text {
         position: relative;
-        top: unset;
-        left: unset;
+        top: auto;
+        left: auto;
+        right: auto;
         transform: none;
 
-        width: 100%;
-        z-index: 3;
-
+        max-width: 100%;
         text-align: left;
     }
 
     .hero-text h1 {
         font-size: 2rem;
         line-height: 1.2;
-        margin-bottom: 0.8rem;
     }
 
     .hero-text p {
         font-size: 0.95rem;
-        margin-bottom: 1.2rem;
-        max-width: 90%;
     }
 
     .hero-btn {
-        padding: 0.8rem 1.6rem;
+        padding: 0.7rem 1.8rem;
         font-size: 0.95rem;
-    }
-}
-
-
-    div[data-testid="column"] {
-        width: 100% !important;
-        flex: 1 1 100% !important;
-        max-width: 100% !important;
-    }
-
-    .card-container {
-        margin-bottom: 1.2rem;
-    }
-
-    .card-img {
-        height: 160px;
-        object-fit: cover;
     }
 
     .result-card {
@@ -284,6 +256,8 @@ h1, h2 {
         gap: 1rem;
     }
 }
+
+
 
 
 
